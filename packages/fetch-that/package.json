@@ -1,0 +1,33 @@
+{
+	"name": "fetch-that",
+	"version": "0.1.0",
+	"description": "Cross-OS URL fetcher for AI agents with a composable plugin architecture",
+	"type": "module",
+	"module": "index.ts",
+	"bin": {
+		"fetch-that": "cli.ts"
+	},
+	"exports": {
+		".": "./index.ts"
+	},
+	"keywords": [
+		"fetch",
+		"ai",
+		"agent",
+		"cli",
+		"plugin"
+	],
+	"license": "MIT",
+	"dependencies": {
+		"commander": "^13.1.0",
+		"fetch-jq": "workspace:*",
+		"fetch-json-schema": "workspace:*",
+		"fetch-md": "workspace:*"
+	},
+	"devDependencies": {
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5"
+	}
+}
