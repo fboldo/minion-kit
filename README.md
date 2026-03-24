@@ -4,12 +4,18 @@ A toolkit with different skills and tools to be used by AI agents.
 
 ## Packages
 
-| Package | Published | Description |
-|---------|-----------|-------------|
-| `agent-fetch` | Yes | Cross-OS URL fetcher CLI with composable plugin architecture |
-| `fetch-jq` | No (internal) | Plugin: apply jq filters to JSON responses |
-| `fetch-json-schema` | No (internal) | Plugin: infer JSON Schema from responses |
-| `fetch-md` | No (internal) | Plugin: convert HTML responses to Markdown |
+Packages exported by this monorepo are CLI tools that can be used directly with `npx`. Each package has its own README with usage instructions.
+
+| Package | Description |
+|---------|-------------|
+| [`agent-fetch`](./packages/agent-fetch/README.md) | Cross-OS URL fetcher CLI with composable plugin architecture |
+
+
+## Skills
+
+| Skill | Description |
+|-------|-------------|
+| [`agent-fetch`](./skills/agent-fetch/SKILL.md) | Cross-OS URL fetcher CLI with composable plugin architecture |
 
 ## Development
 
