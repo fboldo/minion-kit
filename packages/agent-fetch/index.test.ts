@@ -1,10 +1,10 @@
 import { describe, expect, test } from "bun:test";
-import type { FetchThatPlugin, FetchThatRequest } from "./index.ts";
+import type { AgentFetchPlugin, AgentFetchRequest } from "./index.ts";
 import { createPlugin, executeFetch, runPipeline } from "./index.ts";
 
 describe("createPlugin", () => {
 	test("returns the same definition object", () => {
-		const def: FetchThatPlugin = {
+		const def: AgentFetchPlugin = {
 			id: "test",
 			name: "test",
 			description: "A test plugin",
@@ -17,7 +17,7 @@ describe("createPlugin", () => {
 
 describe("executeFetch", () => {
 	test("fetches a URL and returns status, body, headers", async () => {
-		const request: FetchThatRequest = {
+		const request: AgentFetchRequest = {
 			url: "https://httpbin.org/get",
 			method: "GET",
 			headers: {},
@@ -31,7 +31,7 @@ describe("executeFetch", () => {
 	});
 
 	test("passes custom headers", async () => {
-		const request: FetchThatRequest = {
+		const request: AgentFetchRequest = {
 			url: "https://httpbin.org/headers",
 			method: "GET",
 			headers: { "X-Custom": "test-value" },
@@ -55,7 +55,7 @@ describe("executeFetch", () => {
 			return originalFetch(...args);
 		};
 		try {
-			const request: FetchThatRequest = {
+			const request: AgentFetchRequest = {
 				url: "https://httpbin.org/get",
 				method: "GET",
 				headers: {},
@@ -107,7 +107,7 @@ describe("runPipeline", () => {
 			},
 		});
 
-		const request: FetchThatRequest = {
+		const request: AgentFetchRequest = {
 			url: "https://httpbin.org/get",
 			method: "GET",
 			headers: {},
@@ -134,7 +134,7 @@ describe("runPipeline", () => {
 			},
 		});
 
-		const request: FetchThatRequest = {
+		const request: AgentFetchRequest = {
 			url: "https://httpbin.org/get",
 			method: "GET",
 			headers: {},
@@ -161,7 +161,7 @@ describe("runPipeline", () => {
 			},
 		});
 
-		const request: FetchThatRequest = {
+		const request: AgentFetchRequest = {
 			url: "https://httpbin.org/headers",
 			method: "GET",
 			headers: {},

@@ -6,7 +6,7 @@ A toolkit with different skills and tools to be used by AI agents.
 
 | Package | Published | Description |
 |---------|-----------|-------------|
-| `fetch-that` | Yes | Cross-OS URL fetcher CLI with composable plugin architecture |
+| `agent-fetch` | Yes | Cross-OS URL fetcher CLI with composable plugin architecture |
 | `fetch-jq` | No (internal) | Plugin: apply jq filters to JSON responses |
 | `fetch-json-schema` | No (internal) | Plugin: infer JSON Schema from responses |
 | `fetch-md` | No (internal) | Plugin: convert HTML responses to Markdown |

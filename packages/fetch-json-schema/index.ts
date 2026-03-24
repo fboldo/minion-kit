@@ -1,4 +1,4 @@
-import { createPlugin, type FetchThatResult } from "fetch-that";
+import { type AgentFetchResult, createPlugin } from "agent-fetch";
 
 export const jsonSchemaPlugin = createPlugin({
 	id: "json-schema",
@@ -6,7 +6,7 @@ export const jsonSchemaPlugin = createPlugin({
 	description: "Infer a JSON Schema from the JSON response",
 	enableFlag: "--json-schema",
 	options: [],
-	async postProcess(result: FetchThatResult): Promise<FetchThatResult> {
+	async postProcess(result: AgentFetchResult): Promise<AgentFetchResult> {
 		const data = parseJson(result.body);
 		const schema = infer(data);
 		return {

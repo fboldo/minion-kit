@@ -1,4 +1,4 @@
-# fetch-that
+# agent-fetch
 
 Cross-OS URL fetcher for AI agents with a composable plugin architecture.
 
@@ -6,36 +6,36 @@ Cross-OS URL fetcher for AI agents with a composable plugin architecture.
 
 ```bash
 # Basic fetch
-npx fetch-that <URL> --headers "Header-Name: Header-Value" --method GET --attempts 3
+npx agent-fetch <URL> --headers "Header-Name: Header-Value" --method GET --attempts 3
 
 # With jq filter
-npx fetch-that --jq <URL> --apply '.data | map(select(.active == true))'
+npx agent-fetch --jq <URL> --apply '.data | map(select(.active == true))'
 
 # Infer JSON Schema from response
-npx fetch-that --json-schema <URL>
+npx agent-fetch --json-schema <URL>
 
 # Convert HTML to Markdown
-npx fetch-that --md <URL>
+npx agent-fetch --md <URL>
 ```
 
-Run `npx fetch-that --help` to see all options — each plugin contributes its own section.
+Run `npx agent-fetch --help` to see all options — each plugin contributes its own section.
 
 ## Library API
 
 ```ts
-import { executeFetch, runPipeline, createPlugin } from "fetch-that";
-import type { FetchThatRequest, FetchThatResult, FetchThatPlugin } from "fetch-that";
+import { executeFetch, runPipeline, createPlugin } from "agent-fetch";
+import type { AgentFetchRequest, AgentFetchResult, AgentFetchPlugin } from "agent-fetch";
 ```
 
-### `executeFetch(request: FetchThatRequest): Promise<FetchThatResult>`
+### `executeFetch(request: AgentFetchRequest): Promise<AgentFetchResult>`
 
 Performs an HTTP fetch with retry support. The request object controls URL, method, headers, body, and number of attempts.
 
-### `runPipeline(request, plugins, enabledPluginIds): Promise<FetchThatResult>`
+### `runPipeline(request, plugins, enabledPluginIds): Promise<AgentFetchResult>`
 
 Orchestrates the full lifecycle: pre-process hooks → fetch → post-process hooks, running only the plugins whose IDs are in the enabled set.
 
-### `createPlugin(def: FetchThatPlugin): FetchThatPlugin`
+### `createPlugin(def: AgentFetchPlugin): AgentFetchPlugin`
 
 Factory helper for defining plugins with a consistent shape — id, name, CLI flags, help text, and optional pre/post hooks.
 
@@ -46,7 +46,7 @@ Plugins are composable extensions that hook into the fetch lifecycle:
 - **Pre-process**: mutate the request before fetch (e.g. inject headers)
 - **Post-process**: transform the result after fetch (e.g. filter JSON, convert HTML)
 
-Each plugin declares its own CLI flags and help description, which are registered automatically in `fetch-that --help`.
+Each plugin declares its own CLI flags and help description, which are registered automatically in `agent-fetch --help`.
 
 ### Built-in Plugins
 

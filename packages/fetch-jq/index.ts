@@ -1,4 +1,22 @@
-import { createPlugin, type FetchThatResult } from "fetch-that";
+import { execFile } from "node:child_process";
+import { type AgentFetchResult, createPlugin } from "agent-fetch";
+
+/** Runs jq as a child process, piping input via stdin. */
+function runJq(
+	filter: string,
+	input: string,
+): Promise<{ stdout: string; stderr: string; exitCode: number }> {
+	return new Promise((resolve) => {
+		const child = execFile("jq", [filter], (error, stdout, stderr) => {
+			resolve({
+				stdout,
+				stderr,
+				exitCode: error?.code ? 1 : (child.exitCode ?? 0),
+			});
+		});
+		child.stdin?.end(input);
+	});
+}
 
 export const jqPlugin = createPlugin({
 	id: "jq",
@@ -12,25 +30,15 @@ export const jqPlugin = createPlugin({
 		},
 	],
 	async postProcess(
-		result: FetchThatResult,
+		result: AgentFetchResult,
 		opts: Record<string, unknown>,
-	): Promise<FetchThatResult> {
+	): Promise<AgentFetchResult> {
 		const filter = opts.apply as string | undefined;
 		if (!filter) {
 			throw new Error("jq plugin requires --apply <filter>");
 		}
 
-		const proc = Bun.spawn(["jq", filter], {
-			stdin: new Blob([result.body]),
-			stdout: "pipe",
-			stderr: "pipe",
-		});
-
-		const [stdout, stderr, exitCode] = await Promise.all([
-			new Response(proc.stdout).text(),
-			new Response(proc.stderr).text(),
-			proc.exited,
-		]);
+		const { stdout, stderr, exitCode } = await runJq(filter, result.body);
 
 		if (exitCode !== 0) {
 			throw new Error(`jq failed (exit ${exitCode}): ${stderr.trim()}`);

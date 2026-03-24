@@ -1,8 +1,8 @@
 import { describe, expect, test } from "bun:test";
-import type { FetchThatResult } from "fetch-that";
+import type { AgentFetchResult } from "agent-fetch";
 import { jqPlugin } from "./index.ts";
 
-const jsonResult: FetchThatResult = {
+const jsonResult: AgentFetchResult = {
 	status: 200,
 	headers: {},
 	contentType: "application/json",

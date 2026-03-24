@@ -1,14 +1,17 @@
 {
-	"name": "fetch-that",
+	"name": "agent-fetch",
 	"version": "0.1.0",
 	"description": "Cross-OS URL fetcher for AI agents with a composable plugin architecture",
 	"type": "module",
-	"module": "index.ts",
+	"main": "./index.ts",
 	"bin": {
-		"fetch-that": "cli.ts"
+		"agent-fetch": "./dist/agent-fetch.mjs"
 	},
-	"exports": {
-		".": "./index.ts"
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "bun build ./cli.ts --target=node --minify --outfile=dist/agent-fetch.mjs"
 	},
 	"keywords": [
 		"fetch",

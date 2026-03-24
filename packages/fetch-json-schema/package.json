@@ -7,7 +7,7 @@
 		".": "./index.ts"
 	},
 	"dependencies": {
-		"fetch-that": "workspace:*"
+		"agent-fetch": "workspace:*"
 	},
 	"devDependencies": {
 		"@types/bun": "latest"

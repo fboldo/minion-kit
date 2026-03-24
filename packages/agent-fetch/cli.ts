@@ -1,13 +1,13 @@
-#!/usr/bin/env bun
+#!/usr/bin/env node
 
 import { Command } from "commander";
-import { type FetchThatRequest, runPipeline } from "./index.ts";
+import { type AgentFetchRequest, runPipeline } from "./index.ts";
 import { builtinPlugins } from "./plugins.ts";
 
 const program = new Command();
 
 program
-	.name("fetch-that")
+	.name("agent-fetch")
 	.description("Cross-OS URL fetcher for AI agents with composable plugins")
 	.version("0.1.0")
 	.argument("<url>", "URL to fetch")
@@ -66,7 +66,7 @@ program.action(async (url: string, opts: Record<string, unknown>) => {
 		}
 	}
 
-	const request: FetchThatRequest = {
+	const request: AgentFetchRequest = {
 		url,
 		method: (opts.method as string) ?? "GET",
 		headers,
@@ -86,7 +86,7 @@ program.action(async (url: string, opts: Record<string, unknown>) => {
 		process.stdout.write(result.body);
 	} catch (error) {
 		const message = error instanceof Error ? error.message : String(error);
-		console.error(`fetch-that: ${message}`);
+		console.error(`agent-fetch: ${message}`);
 		process.exit(1);
 	}
 });

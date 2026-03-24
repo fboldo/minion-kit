@@ -1,9 +1,9 @@
 # fetch-json-schema
 
-Internal plugin for [fetch-that](../fetch-that/README.md) — infers a JSON Schema from JSON responses.
+Internal plugin for [agent-fetch](../agent-fetch/README.md) — infers a JSON Schema from JSON responses.
 
-## Usage via fetch-that
+## Usage via agent-fetch
 
 ```bash
-npx fetch-that --json-schema <URL>
+npx agent-fetch --json-schema <URL>
 ```

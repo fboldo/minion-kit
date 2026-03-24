@@ -14,10 +14,29 @@
         "typescript": "^5",
       },
     },
+    "packages/agent-fetch": {
+      "name": "agent-fetch",
+      "version": "0.1.0",
+      "bin": {
+        "agent-fetch": "cli.ts",
+      },
+      "dependencies": {
+        "commander": "^13.1.0",
+        "fetch-jq": "workspace:*",
+        "fetch-json-schema": "workspace:*",
+        "fetch-md": "workspace:*",
+      },
+      "devDependencies": {
+        "@types/bun": "latest",
+      },
+      "peerDependencies": {
+        "typescript": "^5",
+      },
+    },
     "packages/fetch-jq": {
       "name": "fetch-jq",
       "dependencies": {
-        "fetch-that": "workspace:*",
+        "agent-fetch": "workspace:*",
       },
       "devDependencies": {
         "@types/bun": "latest",
@@ -29,7 +48,7 @@
     "packages/fetch-json-schema": {
       "name": "fetch-json-schema",
       "dependencies": {
-        "fetch-that": "workspace:*",
+        "agent-fetch": "workspace:*",
       },
       "devDependencies": {
         "@types/bun": "latest",
@@ -41,27 +60,8 @@
     "packages/fetch-md": {
       "name": "fetch-md",
       "dependencies": {
-        "fetch-that": "workspace:*",
+        "agent-fetch": "workspace:*",
         "node-html-markdown": "^1.3.0",
-      },
-      "devDependencies": {
-        "@types/bun": "latest",
-      },
-      "peerDependencies": {
-        "typescript": "^5",
-      },
-    },
-    "packages/fetch-that": {
-      "name": "fetch-that",
-      "version": "0.1.0",
-      "bin": {
-        "fetch-that": "cli.ts",
-      },
-      "dependencies": {
-        "commander": "^13.1.0",
-        "fetch-jq": "workspace:*",
-        "fetch-json-schema": "workspace:*",
-        "fetch-md": "workspace:*",
       },
       "devDependencies": {
         "@types/bun": "latest",
@@ -94,6 +94,8 @@
 
     "@types/node": ["@types/node@25.5.0", "", { "dependencies": { "undici-types": "~7.18.0" } }, "sha512-jp2P3tQMSxWugkCUKLRPVUpGaL5MVFwF8RDuSRztfwgN1wmqJeMSbKlnEtQqU8UrhTmzEmZdu2I6v2dpp7XIxw=="],
 
+    "agent-fetch": ["agent-fetch@workspace:packages/agent-fetch"],
+
     "boolbase": ["boolbase@1.0.0", "", {}, "sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww=="],
 
     "bun-types": ["bun-types@1.3.11", "", { "dependencies": { "@types/node": "*" } }, "sha512-1KGPpoxQWl9f6wcZh57LvrPIInQMn2TQ7jsgxqpRzg+l0QPOFvJVH7HmvHo/AiPgwXy+/Thf6Ov3EdVn1vOabg=="],
@@ -119,8 +121,6 @@
     "fetch-json-schema": ["fetch-json-schema@workspace:packages/fetch-json-schema"],
 
     "fetch-md": ["fetch-md@workspace:packages/fetch-md"],
-
-    "fetch-that": ["fetch-that@workspace:packages/fetch-that"],
 
     "he": ["he@1.2.0", "", { "bin": { "he": "bin/he" } }, "sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw=="],
 

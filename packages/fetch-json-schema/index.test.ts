@@ -1,10 +1,10 @@
 import { describe, expect, test } from "bun:test";
-import type { FetchThatResult } from "fetch-that";
+import type { AgentFetchResult } from "agent-fetch";
 import { jsonSchemaPlugin } from "./index.ts";
 
 describe("fetch-json-schema plugin", () => {
 	test("infers schema from a simple object", async () => {
-		const result: FetchThatResult = {
+		const result: AgentFetchResult = {
 			status: 200,
 			headers: {},
 			contentType: "application/json",
@@ -20,7 +20,7 @@ describe("fetch-json-schema plugin", () => {
 	});
 
 	test("infers schema from an array", async () => {
-		const result: FetchThatResult = {
+		const result: AgentFetchResult = {
 			status: 200,
 			headers: {},
 			contentType: "application/json",
@@ -33,7 +33,7 @@ describe("fetch-json-schema plugin", () => {
 	});
 
 	test("throws on non-JSON input", async () => {
-		const result: FetchThatResult = {
+		const result: AgentFetchResult = {
 			status: 200,
 			headers: {},
 			contentType: "text/html",

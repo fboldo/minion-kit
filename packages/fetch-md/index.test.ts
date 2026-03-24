@@ -1,10 +1,10 @@
 import { describe, expect, test } from "bun:test";
-import type { FetchThatResult } from "fetch-that";
+import type { AgentFetchResult } from "agent-fetch";
 import { mdPlugin } from "./index.ts";
 
 describe("fetch-md plugin", () => {
 	test("converts HTML to Markdown", async () => {
-		const result: FetchThatResult = {
+		const result: AgentFetchResult = {
 			status: 200,
 			headers: {},
 			contentType: "text/html",
@@ -17,7 +17,7 @@ describe("fetch-md plugin", () => {
 	});
 
 	test("handles HTML without explicit content-type via tag detection", async () => {
-		const result: FetchThatResult = {
+		const result: AgentFetchResult = {
 			status: 200,
 			headers: {},
 			contentType: "",
@@ -28,7 +28,7 @@ describe("fetch-md plugin", () => {
 	});
 
 	test("throws on non-HTML input", async () => {
-		const result: FetchThatResult = {
+		const result: AgentFetchResult = {
 			status: 200,
 			headers: {},
 			contentType: "application/json",

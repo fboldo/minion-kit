@@ -1,4 +1,4 @@
-import { createPlugin, type FetchThatResult } from "fetch-that";
+import { type AgentFetchResult, createPlugin } from "agent-fetch";
 import { NodeHtmlMarkdown } from "node-html-markdown";
 
 export const mdPlugin = createPlugin({
@@ -7,7 +7,7 @@ export const mdPlugin = createPlugin({
 	description: "Convert an HTML response to Markdown",
 	enableFlag: "--md",
 	options: [],
-	async postProcess(result: FetchThatResult): Promise<FetchThatResult> {
+	async postProcess(result: AgentFetchResult): Promise<AgentFetchResult> {
 		const isHtml =
 			result.contentType.includes("text/html") ||
 			result.body.trimStart().startsWith("<");

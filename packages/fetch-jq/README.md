@@ -1,11 +1,11 @@
 # fetch-jq
 
-Internal plugin for [fetch-that](../fetch-that/README.md) — applies jq filters to JSON responses.
+Internal plugin for [agent-fetch](../agent-fetch/README.md) — applies jq filters to JSON responses.
 
 Requires `jq` installed on the system.
 
-## Usage via fetch-that
+## Usage via agent-fetch
 
 ```bash
-npx fetch-that --jq <URL> --apply '.data | map(select(.active == true))'
+npx agent-fetch --jq <URL> --apply '.data | map(select(.active == true))'
 ```

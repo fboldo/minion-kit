@@ -22,6 +22,7 @@
 		"check": "biome check .",
 		"check:fix": "biome check --write .",
 		"typecheck": "tsc --noEmit",
-		"test": "bun test"
+		"test": "bun test",
+		"build": "bun run --filter agent-fetch build"
 	}
 }

@@ -1,5 +1,5 @@
 /** Describes the HTTP request to be executed, including plugin-specific options. */
-export interface FetchThatRequest {
+export interface AgentFetchRequest {
 	url: string;
 	method: string;
 	headers: Record<string, string>;
@@ -9,14 +9,14 @@ export interface FetchThatRequest {
 }
 
 /** The response returned after fetching and optional post-processing by plugins. */
-export interface FetchThatResult {
+export interface AgentFetchResult {
 	status: number;
 	headers: Record<string, string>;
 	contentType: string;
 	body: string;
 }
 
-/** Defines an extra CLI option that a plugin contributes to `fetch-that --help`. */
+/** Defines an extra CLI option that a plugin contributes to `agent-fetch --help`. */
 export interface PluginOptionDef {
 	flags: string;
 	description: string;
@@ -24,7 +24,7 @@ export interface PluginOptionDef {
 }
 
 /** Contract every composable plugin must implement to participate in the pipeline. */
-export interface FetchThatPlugin {
+export interface AgentFetchPlugin {
 	/** Unique identifier, e.g. "jq" */
 	id: string;
 	/** Human-readable name shown in --help */
@@ -37,25 +37,25 @@ export interface FetchThatPlugin {
 	options: PluginOptionDef[];
 	/** Mutate the request before fetch (e.g. set headers) */
 	preProcess?: (
-		request: FetchThatRequest,
+		request: AgentFetchRequest,
 		opts: Record<string, unknown>,
-	) => Promise<FetchThatRequest>;
+	) => Promise<AgentFetchRequest>;
 	/** Transform the result after fetch */
 	postProcess?: (
-		result: FetchThatResult,
+		result: AgentFetchResult,
 		opts: Record<string, unknown>,
-	) => Promise<FetchThatResult>;
+	) => Promise<AgentFetchResult>;
 }
 
 /** Identity factory that returns the plugin definition unchanged — gives a single place to validate or enrich plugins in the future. */
-export function createPlugin(def: FetchThatPlugin): FetchThatPlugin {
+export function createPlugin(def: AgentFetchPlugin): AgentFetchPlugin {
 	return def;
 }
 
 /** Performs the HTTP fetch with automatic retry and exponential back-off. */
 export async function executeFetch(
-	request: FetchThatRequest,
-): Promise<FetchThatResult> {
+	request: AgentFetchRequest,
+): Promise<AgentFetchResult> {
 	for (let attempt = 1; attempt <= request.attempts; attempt++) {
 		try {
 			const init: RequestInit = {
@@ -86,10 +86,10 @@ export async function executeFetch(
 
 /** Runs the full plugin pipeline: pre-process hooks → fetch → post-process hooks. */
 export async function runPipeline(
-	request: FetchThatRequest,
-	plugins: FetchThatPlugin[],
+	request: AgentFetchRequest,
+	plugins: AgentFetchPlugin[],
 	enabledPluginIds: Set<string>,
-): Promise<FetchThatResult> {
+): Promise<AgentFetchResult> {
 	const active = plugins.filter((p) => enabledPluginIds.has(p.id));
 
 	const req = await active.reduce(
