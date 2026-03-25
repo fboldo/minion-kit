@@ -16,7 +16,7 @@ export interface AgentFetchResult {
 	body: string;
 }
 
-/** Defines an extra CLI option that a plugin contributes to `agent-fetch --help`. */
+/** Defines an extra CLI option that a plugin contributes to `minion-fetch --help`. */
 export interface PluginOptionDef {
 	flags: string;
 	description: string;

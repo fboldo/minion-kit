@@ -1,9 +1,9 @@
 # fetch-json-schema
 
-Internal plugin for [agent-fetch](../agent-fetch/README.md) — infers a JSON Schema from JSON responses.
+Internal plugin for [minion-fetch](../minion-fetch/README.md) — infers a JSON Schema from JSON responses.
 
-## Usage via agent-fetch
+## Usage via minion-fetch
 
 ```bash
-npx agent-fetch --json-schema <URL>
+npx minion-fetch --json-schema <URL>
 ```

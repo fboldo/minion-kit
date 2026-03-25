@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import type { AgentFetchResult } from "agent-fetch";
+import type { AgentFetchResult } from "minion-fetch";
 import { jsonSchemaPlugin } from "./index.ts";
 
 describe("fetch-json-schema plugin", () => {

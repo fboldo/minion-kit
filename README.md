@@ -8,14 +8,14 @@ Packages exported by this monorepo are CLI tools that can be used directly with 
 
 | Package | Description |
 |---------|-------------|
-| [`agent-fetch`](./packages/agent-fetch/README.md) | Cross-OS URL fetcher CLI with composable plugin architecture |
+| [`minion-fetch`](./packages/minion-fetch/README.md) | Cross-OS URL fetcher CLI with composable plugin architecture |
 
 
 ## Skills
 
 | Skill | Description |
 |-------|-------------|
-| [`agent-fetch`](./skills/agent-fetch/SKILL.md) | Cross-OS URL fetcher CLI with composable plugin architecture |
+| [`minion-fetch`](./skills/minion-fetch/SKILL.md) | Cross-OS URL fetcher CLI with composable plugin architecture |
 
 ## Development
 

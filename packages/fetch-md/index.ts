@@ -1,4 +1,4 @@
-import { type AgentFetchResult, createPlugin } from "agent-fetch";
+import { type AgentFetchResult, createPlugin } from "minion-fetch";
 import { NodeHtmlMarkdown } from "node-html-markdown";
 
 export const mdPlugin = createPlugin({

@@ -44,7 +44,7 @@ jobs:
         uses: changesets/action@v1
         with:
           version: bunx changeset version
-          publish: npm publish ./packages/agent-fetch --provenance --access public
+          publish: npm publish ./packages/minion-fetch --provenance --access public
           title: 'chore: version packages'
           commit: 'chore: version packages'
         env:

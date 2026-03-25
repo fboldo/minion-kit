@@ -1,9 +1,9 @@
 # fetch-md
 
-Internal plugin for [agent-fetch](../agent-fetch/README.md) — converts HTML responses to Markdown.
+Internal plugin for [minion-fetch](../minion-fetch/README.md) — converts HTML responses to Markdown.
 
-## Usage via agent-fetch
+## Usage via minion-fetch
 
 ```bash
-npx agent-fetch --md <URL>
+npx minion-fetch --md <URL>
 ```

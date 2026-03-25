@@ -1,6 +1,6 @@
 {
-	"name": "agent-fetch",
-	"version": "0.0.0",
+	"name": "minion-fetch",
+	"version": "0.1.0",
 	"description": "Cross-OS URL fetcher for AI agents with a composable plugin architecture",
 	"type": "module",
 	"main": "./index.ts",
@@ -12,13 +12,14 @@
 	},
 	"homepage": "https://github.com/fboldo/minion-kit#readme",
 	"bin": {
-		"agent-fetch": "./dist/agent-fetch.mjs"
+		"minion-fetch": "./dist/minion-fetch.js"
 	},
 	"files": [
-		"dist"
+		"dist/minion-fetch.js"
 	],
 	"scripts": {
-		"build": "bun build ./cli.ts --target=node --minify --outfile=dist/agent-fetch.mjs",
+		"clean": "node -e \"const fs=require('node:fs'); for (const f of ['dist/minion-fetch.js','dist/agent-fetch.js','dist/agent-fetch.mjs']) { try { fs.unlinkSync(f); } catch {} }\"",
+		"build": "bun run clean && bun build ./cli.ts --target=node --minify --outfile=dist/minion-fetch.js",
 		"prepack": "bun run build && cp package.json package.json.bak && npm pkg delete dependencies devDependencies",
 		"postpack": "mv package.json.bak package.json"
 	},

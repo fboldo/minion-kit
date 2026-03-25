@@ -1,4 +1,4 @@
-import { type AgentFetchResult, createPlugin } from "agent-fetch";
+import { type AgentFetchResult, createPlugin } from "minion-fetch";
 
 export const jsonSchemaPlugin = createPlugin({
 	id: "json-schema",

@@ -7,7 +7,7 @@
 		".": "./index.ts"
 	},
 	"dependencies": {
-		"agent-fetch": "workspace:*"
+		"minion-fetch": "workspace:*"
 	},
 	"devDependencies": {
 		"@types/bun": "latest"

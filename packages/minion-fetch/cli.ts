@@ -7,7 +7,7 @@ import { builtinPlugins } from "./plugins.ts";
 const program = new Command();
 
 program
-	.name("agent-fetch")
+	.name("minion-fetch")
 	.description("Cross-OS URL fetcher for AI agents with composable plugins")
 	.version("0.1.0")
 	.argument("<url>", "URL to fetch")
@@ -86,7 +86,7 @@ program.action(async (url: string, opts: Record<string, unknown>) => {
 		process.stdout.write(result.body);
 	} catch (error) {
 		const message = error instanceof Error ? error.message : String(error);
-		console.error(`agent-fetch: ${message}`);
+		console.error(`minion-fetch: ${message}`);
 		process.exit(1);
 	}
 });

@@ -1,4 +1,4 @@
-# agent-fetch
+# minion-fetch
 
 Cross-OS URL fetcher for AI agents with a composable plugin architecture.
 
@@ -6,25 +6,25 @@ Cross-OS URL fetcher for AI agents with a composable plugin architecture.
 
 ```bash
 # Basic fetch
-npx agent-fetch <URL> --headers "Header-Name: Header-Value" --method GET --attempts 3
+npx minion-fetch <URL> --headers "Header-Name: Header-Value" --method GET --attempts 3
 
 # With jq filter
-npx agent-fetch --jq <URL> --apply '.data | map(select(.active == true))'
+npx minion-fetch --jq <URL> --apply '.data | map(select(.active == true))'
 
 # Infer JSON Schema from response
-npx agent-fetch --json-schema <URL>
+npx minion-fetch --json-schema <URL>
 
 # Convert HTML to Markdown
-npx agent-fetch --md <URL>
+npx minion-fetch --md <URL>
 ```
 
-Run `npx agent-fetch --help` to see all options — each plugin contributes its own section.
+Run `npx minion-fetch --help` to see all options — each plugin contributes its own section.
 
 ## Library API
 
 ```ts
-import { executeFetch, runPipeline, createPlugin } from "agent-fetch";
-import type { AgentFetchRequest, AgentFetchResult, AgentFetchPlugin } from "agent-fetch";
+import { executeFetch, runPipeline, createPlugin } from "minion-fetch";
+import type { AgentFetchRequest, AgentFetchResult, AgentFetchPlugin } from "minion-fetch";
 ```
 
 ### `executeFetch(request: AgentFetchRequest): Promise<AgentFetchResult>`
@@ -46,7 +46,7 @@ Plugins are composable extensions that hook into the fetch lifecycle:
 - **Pre-process**: mutate the request before fetch (e.g. inject headers)
 - **Post-process**: transform the result after fetch (e.g. filter JSON, convert HTML)
 
-Each plugin declares its own CLI flags and help description, which are registered automatically in `agent-fetch --help`.
+Each plugin declares its own CLI flags and help description, which are registered automatically in `minion-fetch --help`.
 
 ### Built-in Plugins
 
