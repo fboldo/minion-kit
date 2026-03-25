@@ -1,16 +1,16 @@
-name: Publish to npm
+name: Release
 
 on:
-  workflow_dispatch:
-  release:
-    types: [published]
+  push:
+    branches: [main]
 
 permissions:
-  contents: read
+  contents: write
+  pull-requests: write
   id-token: write
 
 jobs:
-  publish:
+  release:
     runs-on: ubuntu-latest
 
     steps:
@@ -31,8 +31,22 @@ jobs:
       - name: Install deps
         run: bun install --frozen-lockfile
 
-      - name: Test
-        run: bun test --pass-with-no-tests
+      - name: Check
+        run: bun run check
 
-      - name: Build
-        run: bun run build
+      - name: Typecheck
+        run: bun run typecheck
+
+      - name: Test
+        run: bun test
+
+      - name: Create Release PR or Publish
+        uses: changesets/action@v1
+        with:
+          version: bunx changeset version
+          publish: npm publish ./packages/agent-fetch --provenance --access public
+          title: 'chore: version packages'
+          commit: 'chore: version packages'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
