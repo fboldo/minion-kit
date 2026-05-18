@@ -1,0 +1,44 @@
+{
+	"id": "minion-fetch",
+	"name": "minion-fetch",
+	"version": "0.1.0",
+	"target": "claude-code",
+	"exporter": "@oiap/exporter-claude-code",
+	"files": [
+		{
+			"path": ".claude-plugin/plugin.json",
+			"source": {
+				"primitiveId": "minion-fetch",
+				"primitiveKind": "manifest"
+			}
+		},
+		{
+			"path": "commands/minion-fetch.md",
+			"source": {
+				"primitiveId": "minion-fetch-command",
+				"primitiveKind": "command"
+			}
+		},
+		{
+			"path": ".oiap/policy.json",
+			"source": {
+				"primitiveId": "oiap-policy",
+				"primitiveKind": "policy"
+			}
+		},
+		{
+			"path": ".oiap/runtime-modules.json",
+			"source": {
+				"primitiveId": "oiap-runtime-modules",
+				"primitiveKind": "runtime"
+			}
+		},
+		{
+			"path": "README.md",
+			"source": {
+				"primitiveId": "minion-fetch",
+				"primitiveKind": "readme"
+			}
+		}
+	]
+}

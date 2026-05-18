@@ -1,0 +1,17 @@
+{
+	"target": "claude-code",
+	"status": "ok",
+	"mappedCapabilities": [
+		{
+			"kind": "package",
+			"target": "claude-code"
+		},
+		{
+			"kind": "commands",
+			"target": "claude-code"
+		}
+	],
+	"degradedCapabilities": [],
+	"unsupportedCapabilities": [],
+	"issues": []
+}

@@ -1,0 +1,11 @@
+{
+	"version": 1,
+	"skills": {
+		"create-plugin": {
+			"source": "fboldo/oiap",
+			"sourceType": "github",
+			"skillPath": "skills/create-plugin/SKILL.md",
+			"computedHash": "30b4187c4aff93f3a7bab86c21e8cd22f356a1a03ea91a8adcce9d0461e1907f"
+		}
+	}
+}

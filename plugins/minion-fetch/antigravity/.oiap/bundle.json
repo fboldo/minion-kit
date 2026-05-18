@@ -1,0 +1,51 @@
+{
+	"id": "minion-fetch",
+	"name": "minion-fetch",
+	"version": "0.1.0",
+	"target": "antigravity",
+	"exporter": "@oiap/exporter-antigravity",
+	"files": [
+		{
+			"path": ".oiap/antigravity-target.json",
+			"source": {
+				"primitiveId": "minion-fetch",
+				"primitiveKind": "manifest"
+			}
+		},
+		{
+			"path": ".agents/workflows/minion-fetch.md",
+			"source": {
+				"primitiveId": "minion-fetch-command",
+				"primitiveKind": "command-as-workflow"
+			}
+		},
+		{
+			"path": ".oiap/antigravity-permissions.json",
+			"source": {
+				"primitiveId": "antigravity-permissions",
+				"primitiveKind": "policy"
+			}
+		},
+		{
+			"path": ".oiap/policy.json",
+			"source": {
+				"primitiveId": "oiap-policy",
+				"primitiveKind": "policy"
+			}
+		},
+		{
+			"path": ".oiap/runtime-modules.json",
+			"source": {
+				"primitiveId": "oiap-runtime-modules",
+				"primitiveKind": "runtime"
+			}
+		},
+		{
+			"path": "README.md",
+			"source": {
+				"primitiveId": "minion-fetch",
+				"primitiveKind": "readme"
+			}
+		}
+	]
+}

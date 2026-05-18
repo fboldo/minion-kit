@@ -1,0 +1,17 @@
+{
+	"target": "vscode-copilot-chat",
+	"status": "ok",
+	"mappedCapabilities": [
+		{
+			"kind": "package",
+			"target": "vscode-copilot-chat"
+		},
+		{
+			"kind": "commands",
+			"target": "vscode-copilot-chat"
+		}
+	],
+	"degradedCapabilities": [],
+	"unsupportedCapabilities": [],
+	"issues": []
+}

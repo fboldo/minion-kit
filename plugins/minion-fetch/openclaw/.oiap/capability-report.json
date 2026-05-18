@@ -1,0 +1,33 @@
+{
+	"target": "openclaw",
+	"status": "degraded",
+	"mappedCapabilities": [
+		{
+			"kind": "package",
+			"target": "openclaw"
+		},
+		{
+			"kind": "skills",
+			"target": "openclaw"
+		}
+	],
+	"degradedCapabilities": [
+		{
+			"capability": {
+				"kind": "commands",
+				"target": "openclaw"
+			},
+			"from": "native-registerCommand",
+			"to": "user-invocable-skill",
+			"reason": "OpenClaw command definitions are exported as skills and commandAliases until registerCommand lowering is implemented."
+		}
+	],
+	"unsupportedCapabilities": [],
+	"issues": [
+		{
+			"severity": "warning",
+			"code": "degraded-commands",
+			"message": "OpenClaw command definitions are exported as skills and commandAliases until registerCommand lowering is implemented."
+		}
+	]
+}

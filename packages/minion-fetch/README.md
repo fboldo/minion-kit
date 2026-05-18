@@ -55,3 +55,34 @@ Each plugin declares its own CLI flags and help description, which are registere
 | `fetch-jq` | `--jq` | Apply a jq filter to the JSON response |
 | `fetch-json-schema` | `--json-schema` | Infer a JSON Schema from the response |
 | `fetch-md` | `--md` | Convert an HTML response to Markdown |
+
+## OIAP Plugin
+
+This package includes an OIAP plugin definition at `oiap.plugin.ts` that adds a
+portable `/minion-fetch` command for these targets:
+
+- `antigravity`
+- `claude-code`
+- `codex`
+- `cursor`
+- `openclaw`
+- `vscode-copilot-chat`
+
+Build all supported target bundles from this package directory:
+
+```bash
+bun install
+bun run targets
+bun run build:oiap
+```
+
+Publish the generated bundles to the repository root under `plugins/`:
+
+```bash
+bun run publish:oiap
+```
+
+The generated command guides the host agent to run `minion-fetch` or
+`npx minion-fetch` with the package's built-in `--jq`, `--json-schema`, and
+`--md` options. Published bundles land directly in `plugins/minion-fetch`, with
+Git history acting as the trace for generated changes.

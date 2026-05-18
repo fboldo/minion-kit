@@ -1,0 +1,17 @@
+{
+	"name": "minion-fetch",
+	"version": "0.1.0",
+	"description": "Adds a portable minion-fetch command for URL fetching and response transforms.",
+	"license": "MIT",
+	"keywords": [
+		"web",
+		"fetch",
+		"commands"
+	],
+	"skills": "./skills/",
+	"interface": {
+		"displayName": "minion-fetch",
+		"shortDescription": "Adds a portable minion-fetch command for URL fetching and response transforms.",
+		"category": "web"
+	}
+}

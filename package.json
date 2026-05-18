@@ -18,11 +18,16 @@
 	},
 	"scripts": {
 		"format": "biome format --write .",
+		"format:staged": "biome check --write --staged --no-errors-on-unmatched",
 		"format:check": "biome format .",
 		"lint": "biome lint .",
 		"lint:fix": "biome lint --write .",
 		"check": "biome check .",
 		"check:fix": "biome check --write .",
+		"build:plugins": "bun run --filter minion-fetch build:oiap",
+		"prepare": "husky",
+		"precommit": "bun run format:staged && bun run publish:plugins",
+		"publish:plugins": "bun run --filter minion-fetch publish:oiap",
 		"typecheck": "tsc --noEmit",
 		"test": "bun test",
 		"build": "bun run --filter minion-fetch build"

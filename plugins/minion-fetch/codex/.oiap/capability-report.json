@@ -1,0 +1,29 @@
+{
+	"target": "codex",
+	"status": "degraded",
+	"mappedCapabilities": [
+		{
+			"kind": "package",
+			"target": "codex"
+		}
+	],
+	"degradedCapabilities": [
+		{
+			"capability": {
+				"kind": "commands",
+				"target": "codex"
+			},
+			"from": "native-command",
+			"to": "skill",
+			"reason": "Codex plugins expose reusable workflows as skills, so OIAP commands are exported as explicit Codex skills."
+		}
+	],
+	"unsupportedCapabilities": [],
+	"issues": [
+		{
+			"severity": "warning",
+			"code": "degraded-commands",
+			"message": "Codex plugins expose reusable workflows as skills, so OIAP commands are exported as explicit Codex skills."
+		}
+	]
+}

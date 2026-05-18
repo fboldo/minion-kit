@@ -1,0 +1,11 @@
+{
+	"version": 1,
+	"permissions": {
+		"allow": [],
+		"deny": [],
+		"ask": []
+	},
+	"notes": [
+		"Antigravity documents allow, deny, and ask resource strings, but not a project-local policy file path."
+	]
+}

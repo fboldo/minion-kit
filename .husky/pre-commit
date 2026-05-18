@@ -1,1 +1,3 @@
-biome check --staged --no-errors-on-unmatched
+bun run precommit
+git update-index --again
+git add plugins

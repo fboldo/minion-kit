@@ -19,9 +19,14 @@
 	],
 	"scripts": {
 		"clean": "node -e \"const fs=require('node:fs'); for (const f of ['dist/minion-fetch.js','dist/agent-fetch.js','dist/agent-fetch.mjs']) { try { fs.unlinkSync(f); } catch {} }\"",
+		"clean:oiap": "node -e \"const fs=require('node:fs'); for (const dir of ['dist/oiap','dist/vscode-copilot-chat']) { try { fs.rmSync(dir,{recursive:true,force:true}); } catch {} }\"",
+		"clean:oiap:publish": "cd ../.. && node -e \"const fs=require('node:fs'); try { fs.rmSync('plugins/minion-fetch',{recursive:true,force:true}); } catch {}\"",
 		"build": "bun run clean && bun build ./cli.ts --target=node --minify --outfile=dist/minion-fetch.js",
+		"build:oiap": "bun run clean:oiap && oiap build oiap.plugin.ts --out dist/oiap",
 		"prepack": "bun run build && cp package.json package.json.bak && npm pkg delete dependencies devDependencies",
-		"postpack": "mv package.json.bak package.json"
+		"postpack": "mv package.json.bak package.json",
+		"publish:oiap": "bun run clean:oiap:publish && cd ../.. && oiap build packages/minion-fetch/oiap.plugin.ts --out plugins/minion-fetch",
+		"targets": "oiap targets"
 	},
 	"keywords": [
 		"fetch",
@@ -38,6 +43,9 @@
 		"fetch-md": "workspace:*"
 	},
 	"devDependencies": {
+		"@oiap/cli": "latest",
+		"@oiap/core": "latest",
+		"@types/node": "latest",
 		"@types/bun": "latest"
 	},
 	"peerDependencies": {

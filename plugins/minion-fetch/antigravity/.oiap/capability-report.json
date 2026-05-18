@@ -1,0 +1,33 @@
+{
+	"target": "antigravity",
+	"status": "degraded",
+	"mappedCapabilities": [
+		{
+			"kind": "package",
+			"target": "antigravity"
+		},
+		{
+			"kind": "commands",
+			"target": "antigravity"
+		}
+	],
+	"degradedCapabilities": [
+		{
+			"capability": {
+				"kind": "commands",
+				"target": "antigravity"
+			},
+			"from": "documented-slash-workflow",
+			"to": "workspace-workflow-markdown",
+			"reason": "Antigravity documents slash-invoked workflow markdown, but does not document the workflow filesystem directory; OIAP emits .agents/workflows as a reviewable workspace artifact."
+		}
+	],
+	"unsupportedCapabilities": [],
+	"issues": [
+		{
+			"severity": "warning",
+			"code": "degraded-commands",
+			"message": "Antigravity documents slash-invoked workflow markdown, but does not document the workflow filesystem directory; OIAP emits .agents/workflows as a reviewable workspace artifact."
+		}
+	]
+}

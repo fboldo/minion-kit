@@ -1,0 +1,26 @@
+{
+	"id": "minion-fetch",
+	"name": "minion-fetch",
+	"description": "Adds a portable minion-fetch command for URL fetching and response transforms.",
+	"version": "0.1.0",
+	"configSchema": {
+		"type": "object",
+		"additionalProperties": false,
+		"properties": {}
+	},
+	"skills": [
+		"./skills"
+	],
+	"commandAliases": [
+		{
+			"name": "minion-fetch",
+			"kind": "runtime-slash"
+		}
+	],
+	"activation": {
+		"onStartup": false,
+		"onCommands": [
+			"minion-fetch"
+		]
+	}
+}

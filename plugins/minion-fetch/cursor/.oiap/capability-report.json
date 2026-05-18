@@ -1,0 +1,17 @@
+{
+	"target": "cursor",
+	"status": "ok",
+	"mappedCapabilities": [
+		{
+			"kind": "package",
+			"target": "cursor"
+		},
+		{
+			"kind": "commands",
+			"target": "cursor"
+		}
+	],
+	"degradedCapabilities": [],
+	"unsupportedCapabilities": [],
+	"issues": []
+}
